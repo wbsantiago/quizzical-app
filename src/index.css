@@ -1,9 +1,5 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  background-color: var(--bg-white);
-  background-image: url("./assets/blobs.svg"), url("./assets/blobs2.svg");
-  background-repeat: no-repeat, no-repeat;
-  background-position: right top, 0% calc( 100% + 100vh );
+  box-sizing: border-box; 
 }

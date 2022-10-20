@@ -1,0 +1,38 @@
+.starter--div {
+    font-family: 'Inter', sans-serif;
+    color: var(--tx-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.starter--title {
+    font-size: 36px;
+    font-family: 'Karla', sans-serif;
+    margin-bottom: 7px;
+}
+
+.starter--description {
+    margin-bottom: 29px;
+}
+
+.starter--btn {
+    background-color: var(--bg-white);
+    color: var(--bg-blue);
+    width: 193px;
+    height: 52px;
+    border: 1px solid var(--bg-blue);
+    border-radius: 15px;
+    font-weight: 500;
+    line-height: 19.36px;
+    font-size: 19.36px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.starter--btn:hover {
+    background-color: var(--bg-blue);
+    color: var(--bg-white);
+}
