@@ -1,58 +1,35 @@
 import './main.css'
+import Form from './Form.jsx' 
+import { useEffect, useState } from 'react'
 
 
-export default function Main(props) {
-    
+export default function Main() {
+   
+    const [allQuestions, setALLQuestions] = useState([])
 
-    // const questionElements = props.allQuestions.map(question => (
-    //     <Form 
-    //       key={question.question}
-    //       question={question.question}
-    //       correctAnswer={question.correct_answers}
-    //       incorrectAnswers={question.incorrect_answers}
-    //     /> 
-    //   ))
+    useEffect(() => {
+        async function getQuestions() {
+        const res = await fetch('https://opentdb.com/api.php?amount=5&category=18&type=multiple')
+        const data = await res.json()
+        setALLQuestions(data.results)
+        }
+    getQuestions()
+    }, [])
 
-    //console.log(props.formQuestions)
-    
+    const questionElements = allQuestions.map(question => (
+        <Form 
+          key={question.question}
+          question={question.question}
+          correctAnswer={question.correct_answer}
+          incorrectAnswers={question.incorrect_answers}
+        /> 
+    ))
+
+    //const choicesOption =    
+        
     return (
         <div className="main">
-            <form className='quizz--form'>
-                <label htmlFor="question" className="quizz--form__label">
-                What does the term GPU stand for?
-                    <div className="div--pre">
-                        <input
-                            className='quizz--form__btn'
-                            type="button"
-                            id="question"
-                            name="question"
-                            value="Graphics Processing Unit"
-                        />
-                        <input
-                            className='quizz--form__btn'
-                            type="button"
-                            id="question"
-                            name="question"
-                            value="Gaming Processor Unit"
-                        />
-                        <input
-                            className='quizz--form__btn'
-                            type="button"
-                            id="question"
-                            name="question"
-                            value="Graphite Producing Unit"
-                        />
-                        <input
-                            className='quizz--form__btn'
-                            type="button"
-                            id="question"
-                            name="question"
-                            value="Graphical Proprietary Unit"
-                        />
-                    </div>
-                    <div className='quizz--divider'></div>
-                </label>
-            </form>
+            {questionElements}
         </div>
     )
 }
