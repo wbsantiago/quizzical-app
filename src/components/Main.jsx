@@ -1,6 +1,6 @@
 import './main.css'
 import { useEffect, useState } from 'react'
-import Form from './Form' 
+import Form from './Form'
 import Answers from './Answers'
 
 export default function Main() {
@@ -16,33 +16,26 @@ export default function Main() {
     getQuestions()
     }, [])
 
-    const allAnswers = allQuestions.map(answers => {
-        const answersArray = []
-        answersArray.push(answers.incorrect_answers)
-        const answersFlated = answersArray.flat(1)
-        return answersFlated
-    })
+    const alternatives = allQuestions.map(question => [
+        question['correct_answer'],
+        ...question['incorrect_answers']
+    ].sort(() => Math.random() * 10 - 5)
+    )
 
-    // allAnswers.push( allQuestions.map(correct => {
-    //     for (let i = 0; i < 5; i++) {
-            
-    //     }
-    // }))
-
-    console.log(allAnswers)
-
-    // <Answers
-    //   answers={answersArray.correct_answers}
-    // />
+//     <Answers 
+//         answers={q}
+//     />
 
     const questionElements = allQuestions.map(question => (
-        <Form 
+        <Form
           key={question.question}
           question={question.question}
-          allAnswers={allAnswers}
+          alternatives={alternatives}
           correctAnswer={question.correct_answer}
-        /> 
+        />
     ))
+
+    console.log(questionElements)
 
     return (
         <div className="main">
