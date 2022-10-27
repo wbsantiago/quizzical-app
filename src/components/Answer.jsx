@@ -1,7 +1,7 @@
 export default function Answer(props) {
 
     return (
-        <div className="div--pre">
+        <div>
           <input
               className='quizz--form__btn'
               type="button"

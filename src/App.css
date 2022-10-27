@@ -3,11 +3,3 @@
   --tx-blue: #293264;
   --bg-blue: #4D5B9E;
 }
-
-.App {
-  background-color: var(--bg-white);
-  background-image: url("./assets/blobs.svg"), url("./assets/blobs2.svg");
-  background-repeat: no-repeat, no-repeat;
-  background-position: right top, 0% 100%;
-  height: 100vh;
-}

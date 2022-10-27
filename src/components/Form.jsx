@@ -18,7 +18,7 @@ export default function Form(props) {
     <form className='quizz--form'>
       <label htmlFor="question" className="quizz--form__label">
       {decode (question) }
-      <div>{decode (answerElements) }</div>
+      <div className="quizz--div__answer">{decode (answerElements) }</div>
         <div className='quizz--divider'></div>
       </label>
     </form>
