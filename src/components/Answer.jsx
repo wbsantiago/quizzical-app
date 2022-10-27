@@ -1,4 +1,5 @@
-export default function Answers(props) {
+export default function Answer(props) {
+
     return (
         <div className="div--pre">
           <input
@@ -6,7 +7,7 @@ export default function Answers(props) {
               type="button"
               id="question"
               name="question"
-              value={props.answers}
+              value={props.answer}
           />
         </div>
     )
