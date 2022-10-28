@@ -17,24 +17,6 @@ export default function Main() {
     getQuestions()
     }, [])
 
-    console.log(quizData)
-
-    // const alternatives = data.map(question => [
-    //     {
-    //     "answers": [question['correct_answer'],
-    //     ...question['incorrect_answers']]}
-    // ].sort(() => Math.random() * 10 - 5)
-    // )
-
-    // const alts = alternatives.flat(1)
-
-    
-    // const questions = data.map(quizz => [
-    //     {
-    //         "question":[quizz['question']]
-    //     }
-    // ]).flat(1)  
-
     const questionElements = quizData.map(question => (
         <Form
           key={question.key}

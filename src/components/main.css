@@ -24,6 +24,10 @@
     cursor: pointer;
 }
 
+.quizz--form__btn:hover {
+    background-color: var(--bg-btnhover);
+}
+
 .quizz--divider {
     background-color: #DBDEF0;
     height: 1px;
