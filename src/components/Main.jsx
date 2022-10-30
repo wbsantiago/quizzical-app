@@ -17,6 +17,15 @@ export default function Main() {
     getQuestions()
     }, [])
 
+    function holdAnswer(ans) {
+        setQuizData(prevQuizData => prevQuizData.map(data => {
+                return data.answers.includes(ans) ?
+                {...data, selected: ans} : 
+                data
+            }))
+        console.log(quizData)
+    }
+
     const questionElements = quizData.map(question => (
         <Form
           key={question.key}
@@ -24,6 +33,7 @@ export default function Main() {
           question={question.question}
           correct={question.correct}
           answers={question.answers}
+          holdAnswer={holdAnswer}
         />
     ))
 

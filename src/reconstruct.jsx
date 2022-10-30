@@ -17,6 +17,7 @@ export default function reconstruct(data) {
             id: nanoid(),
             question: data[i].question,
             correct: data[i].correct_answer,
+            selected: false,
             answers: shuffle([correctAnswer, ...incorrectAnswers])
         }
 

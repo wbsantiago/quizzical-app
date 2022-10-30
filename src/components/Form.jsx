@@ -11,6 +11,8 @@ export default function Form(props) {
       key={id + i}
       correct={correct}
       answer={ans}
+      selected={props.selected}
+      holdAnswer={props.holdAnswer}
     />
   ))
 
