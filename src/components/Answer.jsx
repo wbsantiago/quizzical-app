@@ -11,28 +11,24 @@ export default function Answer(props) {
             styles = {
                 backgroundColor: "#4D5B9E",
                 color: "#F5F7FB"
-            } 
-        } else {
-                styles = {
-                    backgroundColor: ""
-                }
             }
-            return styles
+        } else {
+            styles = {
+                backgroundColor: ""
+            }
         }
-        styler()
+        return styles
+    }
+    
+    styler()
+    
     return (
-        <div>
-            <input
-                className='quizz--form__btn'
-                type="button"
-                name="question"
-                key={ nanoid() }
-                value={answer}
-                onClick={() => holdAnswer(answer)}
-                style={styles}
-            />
+        <div
+            style={styles}
+            className="quizz--form__btn"
+            key={ nanoid() }
+            onClick={() => holdAnswer(answer)}>
+            {answer}
         </div>
     )
 }
-    
-

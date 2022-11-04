@@ -39,7 +39,13 @@ export default function Main() {
 
     return (
         <div className="main">
+            <h1 className='starter--title'>Quizzical</h1>
+            <p className='main--category'>Category: Science: Computers</p>
+            <div className='quizz--divider'></div>
             {questionElements}
+            <div className="main--submit">
+                <button type="submit" className="main--btn__check">Check Answers</button>
+            </div>
         </div>
     )
 }
