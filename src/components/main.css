@@ -55,6 +55,14 @@
     background-color: var(--bg-blue);
     color: #FFF;
     font-weight: 700;
+    cursor: pointer;
+    opacity: 0.25;  
+}
+
+.main--btn__check:active,
+.main--btn__check:focus  {
+    border: none;
+    outline: none;
 }
 
 .main--submit {

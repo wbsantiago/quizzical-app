@@ -6,6 +6,8 @@ import reconstruct from '../reconstruct'
 export default function Main() {
 
     const [quizData, setQuizData] = useState([])
+    const [count, setCount] = useState(0)
+    const [disabled, setDisabled] = useState(true)
 
     useEffect(() => {
         async function getQuestions() {
@@ -15,16 +17,7 @@ export default function Main() {
             setQuizData(reconstructedData)
         }
     getQuestions()
-    }, [])
-
-    function holdAnswer(ans) {
-        setQuizData(prevQuizData => prevQuizData.map(data => {
-                return data.answers.includes(ans) ?
-                {...data, selected: ans} : 
-                data
-            }))
-        console.log(quizData)
-    }
+    }, [])   
 
     const questionElements = quizData.map(question => (
         <Form
@@ -37,6 +30,38 @@ export default function Main() {
         />
     ))
 
+    function holdAnswer(ans) {
+        setQuizData(prevQuizData => prevQuizData.map(data => {
+                return data.answers.includes(ans) ?
+                {...data, selected: ans} : 
+                data
+            }))
+        console.log(quizData)
+        // count()
+    }
+
+    // function count() {
+        
+    // }
+
+    function changeDisabled(count) {
+        if( count === 5) {
+            setDisabled(false)
+        }
+    }
+
+    let buttonStyle = {}
+
+    function checkStyle(count) {
+        if ( count === 5) {
+            const buttonStyle = {
+                opacity: 1
+            }
+        }
+        return buttonStyle
+    }
+    checkStyle(count)
+
     return (
         <div className="main">
             <h1 className='starter--title'>Quizzical</h1>
@@ -44,7 +69,13 @@ export default function Main() {
             <div className='quizz--divider'></div>
             {questionElements}
             <div className="main--submit">
-                <button type="submit" className="main--btn__check">Check Answers</button>
+                <button 
+                    type="submit" 
+                    className="main--btn__check" 
+                    style={buttonStyle}
+                    disabled={disabled}>
+                    Check Answers
+                </button>
             </div>
         </div>
     )
