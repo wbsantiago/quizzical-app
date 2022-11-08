@@ -34,24 +34,16 @@ export default function Main() {
 
     function holdAnswer(ans, questionId) {
         setQuizData(prevQuizData => prevQuizData.map(question => {
-            if (question.id === questionId) {
-                const correctAnswer = question.answers.includes(ans)
-                if (correctAnswer) {
-                    selected[question.id] = ans
-                    setSelected(selected)
-                }
-                console.log(questionId, ans, correctAnswer, selected)
-                return { 
-                    ...question,
-                    selected : correctAnswer ? ans : undefined
-                }
-            } else {
-                return question
-            }
+            if (question.id === questionId && question.answers.includes(ans)) {
+                question.selected = selected[question.id] = ans
+                setSelected(selected)
+            } return question
         }))
         // setTimeout(() => console.log(quizData), 5000)
-        // counter()
+        counter()
     }
+
+    console.log(count)
 
     function counter() {
         const selectedAnswers = quizData.map(data => {
