@@ -47,6 +47,11 @@
     max-width: 700px;
 }
 
+.main--submit {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .main--btn__check {
     width: 150px;
     height: 50px;
@@ -55,7 +60,7 @@
     background-color: var(--bg-blue);
     color: #FFF;
     font-weight: 700;
-    /* cursor: pointer; */
+    cursor: pointer;
     opacity: 0.25;  
 }
 
@@ -65,10 +70,18 @@
     outline: none;
 }
 
-.main--submit {
+.main--score {
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    border: 1px solid var(--bg-blue);
+    border-radius: 12px;
+    color: var(--tx-blue);
+    font-weight: 700;
 }
+
 
 @media only screen and (max-width: 539px) {
     .main {

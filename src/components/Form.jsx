@@ -18,11 +18,11 @@ export default function Form(props) {
   />
   ))
     
-  console.log("form", question, selected)
+  console.log(questionId, selected, correct)
   return (
     <div className='quizz--form'>
-      <div>{decode (question) }</div>
-      <div className="quizz--div__answer">{decode (answerElements) }</div>
+      <div>{ decode (question) }</div>
+      <div className="quizz--div__answer">{ decode (answerElements) }</div>
       <div className='quizz--divider'></div>
     </div>
   )

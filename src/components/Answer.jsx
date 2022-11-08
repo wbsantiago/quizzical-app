@@ -1,5 +1,3 @@
-import { nanoid } from "nanoid"
-
 export default function Answer(props) {
 
     const { selected, answer, questionId, holdAnswer } = props

@@ -6,8 +6,9 @@ import reconstruct from '../reconstruct'
 export default function Main() {
 
     const [quizData, setQuizData] = useState([])
-    const [count, setCount] = useState(0)
     const [selected, setSelected] = useState({})
+    const [score, setScore] = useState(0)
+    const [correct, setCorrect] = useState({})
 
     useEffect(() => {
         async function getQuestions() {
@@ -45,6 +46,14 @@ export default function Main() {
         return Object.keys(selected).length === quizData.length
     }
     
+    function checkAnswers(scr, questionId) {
+        
+        
+        // setQuizData(prevQuizData => prevQuizData.map(check => {
+            
+        // }))
+    }
+
     return (
         <div className="main">
             <h1 className='starter--title'>Quizzical</h1>
@@ -52,14 +61,18 @@ export default function Main() {
             <div className='quizz--divider'></div>
             {questionElements}
             <div className="main--submit">
+                <div className="main--score">Score {score}/5</div>
                 <button 
                     type="submit" 
                     className="main--btn__check" 
                     style={allSelected() ? {opacity : 1} : undefined}
-                    disabled={ !allSelected() }>
+                    disabled={ !allSelected() }
+                    onClick={checkAnswers}>
                     Check Answers
                 </button>
             </div>
         </div>
     )
 }
+
+"useId"
