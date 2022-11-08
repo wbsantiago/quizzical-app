@@ -4,18 +4,21 @@ import Answer from "./Answer"
 
 export default function Form(props) {
 
-  const {id, answers, correct, question, holdAnswer, selected } = props
+  const {answers, correct, questionId, question, holdAnswer, selected } = props
 
-  const answerElements = answers.map((ans, i) => (
+  
+  const answerElements = answers.map((answer) => (
     <Answer 
-      key={id + i}
-      correct={correct}
-      answer={ans}
-      selected={selected}
-      holdAnswer={holdAnswer}
-    />
+    key={answer}
+    correct={correct}
+    answer={answer}
+    questionId={questionId}
+    selected={selected}
+    holdAnswer={holdAnswer}
+  />
   ))
-
+    
+  console.log("form", question, selected)
   return (
     <div className='quizz--form'>
       <div>{decode (question) }</div>

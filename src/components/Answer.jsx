@@ -2,7 +2,7 @@ import { nanoid } from "nanoid"
 
 export default function Answer(props) {
 
-    const { selected, answer, holdAnswer } = props
+    const { selected, answer, questionId, holdAnswer } = props
 
     let styles = {}
 
@@ -12,22 +12,18 @@ export default function Answer(props) {
                 backgroundColor: "#4D5B9E",
                 color: "#F5F7FB"
             }
-        } else {
-            styles = {
-                backgroundColor: ""
-            }
         }
         return styles
     }
     
     styler()
     
+    
     return (
         <div
             style={styles}
             className="quizz--form__btn"
-            key={ nanoid() }
-            onClick={() => holdAnswer(answer)}>
+            onClick={() => holdAnswer(answer, questionId)}>
             {answer}
         </div>
     )

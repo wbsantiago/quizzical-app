@@ -8,6 +8,7 @@ export default function Main() {
     const [quizData, setQuizData] = useState([])
     const [count, setCount] = useState(0)
     const [disabled, setDisabled] = useState(true)
+    const [selected, setSelected] = useState({})
 
     useEffect(() => {
         async function getQuestions() {
@@ -21,28 +22,45 @@ export default function Main() {
 
     const questionElements = quizData.map(question => (
         <Form
-          key={question.key}
-          id={question.id}
+          key={question.id}
           question={question.question}
+          questionId={question.id}
           correct={question.correct}
           answers={question.answers}
+          selected={selected[question.id]}
           holdAnswer={holdAnswer}
         />
     ))
 
-    function holdAnswer(ans) {
-        setQuizData(prevQuizData => prevQuizData.map(data => {
-                return data.answers.includes(ans) ?
-                {...data, selected: ans} : 
-                data
-            }))
-        console.log(quizData)
-        // count()
+    function holdAnswer(ans, questionId) {
+        setQuizData(prevQuizData => prevQuizData.map(question => {
+            if (question.id === questionId) {
+                const correctAnswer = question.answers.includes(ans)
+                if (correctAnswer) {
+                    selected[question.id] = ans
+                    setSelected(selected)
+                }
+                console.log(questionId, ans, correctAnswer, selected)
+                return { 
+                    ...question,
+                    selected : correctAnswer ? ans : undefined
+                }
+            } else {
+                return question
+            }
+        }))
+        // setTimeout(() => console.log(quizData), 5000)
+        // counter()
     }
 
-    // function count() {
-        
-    // }
+    function counter() {
+        const selectedAnswers = quizData.map(data => {
+            return data.selected
+        })
+        const newCount = selectedAnswers.filter(value => value != false).length + 1
+        setCount(newCount)
+        changeDisabled(newCount)         
+    }
 
     function changeDisabled(count) {
         if( count === 5) {
@@ -52,15 +70,15 @@ export default function Main() {
 
     let buttonStyle = {}
 
-    function checkStyle(count) {
-        if ( count === 5) {
+    function checkStyles(count){
+        if ( count === 5 ) {
             const buttonStyle = {
                 opacity: 1
             }
         }
         return buttonStyle
     }
-    checkStyle(count)
+    checkStyles(count)
 
     return (
         <div className="main">

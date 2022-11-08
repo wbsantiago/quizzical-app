@@ -13,14 +13,11 @@ export default function reconstruct(data) {
         }
 
         reconstructData[i] = {
-            key: nanoid(),
             id: nanoid(),
             question: data[i].question,
             correct: data[i].correct_answer,
-            selected: false,
             answers: shuffle([correctAnswer, ...incorrectAnswers])
         }
-
     }
     return reconstructData 
 }
