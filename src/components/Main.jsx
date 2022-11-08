@@ -7,7 +7,6 @@ export default function Main() {
 
     const [quizData, setQuizData] = useState([])
     const [count, setCount] = useState(0)
-    const [disabled, setDisabled] = useState(true)
     const [selected, setSelected] = useState({})
 
     useEffect(() => {
@@ -39,39 +38,13 @@ export default function Main() {
                 setSelected(selected)
             } return question
         }))
-        // setTimeout(() => console.log(quizData), 5000)
-        counter()
     }
 
-    console.log(count)
-
-    function counter() {
-        const selectedAnswers = quizData.map(data => {
-            return data.selected
-        })
-        const newCount = selectedAnswers.filter(value => value != false).length + 1
-        setCount(newCount)
-        changeDisabled(newCount)         
+    function allSelected() {
+        if (quizData.length <= 0) return false
+        return Object.keys(selected).length === quizData.length
     }
-
-    function changeDisabled(count) {
-        if( count === 5) {
-            setDisabled(false)
-        }
-    }
-
-    let buttonStyle = {}
-
-    function checkStyles(count){
-        if ( count === 5 ) {
-            const buttonStyle = {
-                opacity: 1
-            }
-        }
-        return buttonStyle
-    }
-    checkStyles(count)
-
+    
     return (
         <div className="main">
             <h1 className='starter--title'>Quizzical</h1>
@@ -82,8 +55,8 @@ export default function Main() {
                 <button 
                     type="submit" 
                     className="main--btn__check" 
-                    style={buttonStyle}
-                    disabled={disabled}>
+                    style={allSelected() ? {opacity : 1} : undefined}
+                    disabled={ !allSelected() }>
                     Check Answers
                 </button>
             </div>

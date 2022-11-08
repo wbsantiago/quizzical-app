@@ -55,7 +55,7 @@
     background-color: var(--bg-blue);
     color: #FFF;
     font-weight: 700;
-    cursor: pointer;
+    /* cursor: pointer; */
     opacity: 0.25;  
 }
 
