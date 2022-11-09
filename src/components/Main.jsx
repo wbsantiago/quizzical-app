@@ -35,12 +35,14 @@ export default function Main() {
     ))
 
     function holdAnswer(ans, questionId) {
-        setQuizData(prevQuizData => prevQuizData.map(question => {
-            if (question.id === questionId && question.answers.includes(ans)) {
-                question.selected = selected[question.id] = ans
-                setSelected(selected)
-            } return question
-        }))
+        if ( !check ) {
+            setQuizData(prevQuizData => prevQuizData.map(question => {
+                if (question.id === questionId && question.answers.includes(ans)) {
+                    question.selected = selected[question.id] = ans
+                    setSelected(selected)
+                } return question
+            }))
+        }
     }
 
     function allSelected() {
