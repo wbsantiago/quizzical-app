@@ -9,6 +9,7 @@ export default function Main() {
     const [selected, setSelected] = useState({})
     const [score, setScore] = useState(0)
     const [correct, setCorrect] = useState({})
+    const [check, setCheck] = useState(false)
 
     useEffect(() => {
         async function getQuestions() {
@@ -29,6 +30,7 @@ export default function Main() {
           answers={question.answers}
           selected={selected[question.id]}
           holdAnswer={holdAnswer}
+          check={check}
         />
     ))
 
@@ -46,11 +48,15 @@ export default function Main() {
         return Object.keys(selected).length === quizData.length
     }
     
-    function checkAnswers(scr, questionId) {
-        
-        
+    function handleClick() {        
+        setCheck(true)
         // setQuizData(prevQuizData => prevQuizData.map(check => {
-            
+        //     if ( check.id === questionId && check.correct.includes(scr)) {
+        //         check.selected = selected[check.id] = scr
+        //         if ( src === selected ) {
+        //             setScore(+score)
+        //         }
+        //     }
         // }))
     }
 
@@ -67,7 +73,7 @@ export default function Main() {
                     className="main--btn__check" 
                     style={allSelected() ? {opacity : 1} : undefined}
                     disabled={ !allSelected() }
-                    onClick={checkAnswers}>
+                    onClick={handleClick}>
                     Check Answers
                 </button>
             </div>
@@ -75,4 +81,5 @@ export default function Main() {
     )
 }
 
-"useId"
+// para substituir o nanoid() o React agr tem o useId 
+// pesquisar sobre
