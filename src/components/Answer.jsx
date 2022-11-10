@@ -14,7 +14,7 @@ export default function Answer(props) {
             styles = {
                 backgroundColor: "#F8BCBC",
                 border: "1px solid #F8BCBC",
-                opacity: "0.3",
+                opacity: "0.55",
                 cursor: "default"
             }
         }  else if (check && answer !== selected) {
