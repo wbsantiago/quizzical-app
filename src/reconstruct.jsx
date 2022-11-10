@@ -22,7 +22,6 @@ export default function reconstruct(data) {
     return reconstructData 
 }
 
-
 function shuffle(arr) {
     return arr.sort((a, b, c, d) => 0.5 - Math.random())
 }

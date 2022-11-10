@@ -4,7 +4,7 @@ import Answer from "./Answer"
 
 export default function Form(props) {
 
-  const {answers, correct, questionId, question, holdAnswer, selected, check } = props
+  const {answers, correct, questionId, questionText, holdAnswer, selected, check } = props
 
   
   const answerElements = answers.map((answer) => (
@@ -22,7 +22,7 @@ export default function Form(props) {
   // console.log(questionId, selected, "testes", correct)
   return (
     <div className='quizz--form'>
-      <div>{ decode (question) }</div>
+      <div>{ decode (questionText) }</div>
       <div className="quizz--div__answer">{ decode (answerElements) }</div>
       <div className='quizz--divider'></div>
     </div>

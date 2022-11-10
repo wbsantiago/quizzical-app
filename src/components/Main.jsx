@@ -7,8 +7,7 @@ export default function Main() {
 
     const [quizData, setQuizData] = useState([])
     const [selected, setSelected] = useState({})
-    const [score, setScore] = useState(0)
-    const [correct, setCorrect] = useState({})
+    const [score, setScore] = useState("")
     const [check, setCheck] = useState(false)
 
     useEffect(() => {
@@ -24,7 +23,7 @@ export default function Main() {
     const questionElements = quizData.map(question => (
         <Form
           key={question.id}
-          question={question.question}
+          questionText={question.question}
           questionId={question.id}
           correct={question.correct}
           answers={question.answers}
@@ -52,14 +51,13 @@ export default function Main() {
     
     function handleClick() {        
         setCheck(true)
-        // setQuizData(prevQuizData => prevQuizData.map(check => {
-        //     if ( check.id === questionId && check.correct.includes(scr)) {
-        //         check.selected = selected[check.id] = scr
-        //         if ( src === selected ) {
-        //             setScore(+score)
-        //         }
-        //     }
-        // }))
+        let correctAnswers = 0
+        for ( let i = 0; i < quizData.length ;i++ ) {
+            if ( quizData[i].correct === quizData[i].selected ) {
+                correctAnswers++
+            }
+        }
+        setScore(`${correctAnswers}/ 5`)
     }
 
     return (
@@ -69,7 +67,7 @@ export default function Main() {
             <div className='quizz--divider'></div>
             {questionElements}
             <div className="main--submit">
-                <div className="main--score">Score {score}/5</div>
+                <div className="main--score">Score {score}</div>
                 <button 
                     type="submit" 
                     className="main--btn__check" 
